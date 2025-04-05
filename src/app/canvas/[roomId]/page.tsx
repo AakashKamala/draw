@@ -2,6 +2,7 @@
 
 import Canvas from "@/components/Canvas";
 import { WS_URL } from "@/config/config";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 import { use, useEffect, useState } from "react";
 
 export default function({ params }: { params: Promise<{ roomId: string }> }) {
@@ -42,6 +43,8 @@ export default function({ params }: { params: Promise<{ roomId: string }> }) {
     }
 
     return(
-        <Canvas roomId={roomId as string} socket={socket}/>
+        <ThemeProvider>
+            <Canvas roomId={roomId as string} socket={socket}/>
+        </ThemeProvider>
     )
 }
